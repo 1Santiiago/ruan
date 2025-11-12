@@ -2,16 +2,26 @@
 interface Props {
   text: string;
   imageURL: string;
+  link: string;
 }
-const { text = "", imageURL = "" } = Astro.props;
+
+const { text = "", imageURL = "", link } = Astro.props;
+
 const imageStyle = {
   backgroundImage: `url(/images/${imageURL})`,
 };
 ---
 
-<div
-  class="py-48 bg-cover m-8 bg-gray-700 bg-blend-multiply"
-  style={imageStyle}
+<a
+  href={link.startsWith('http') ? link : `https://${link}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="block transition-transform hover:scale-105"
 >
-  <h2 class="text-white uppercase text-4xl italic">{text}</h2>
-</div>
+  <div
+    class="py-48 bg-cover m-8 bg-gray-700 bg-blend-multiply rounded-2xl flex items-center justify-center"
+    style={imageStyle}
+  >
+    <h2 class="text-white uppercase text-4xl italic">{text}</h2>
+  </div>
+</a>
