@@ -3,31 +3,41 @@ import { Image } from 'astro:assets';
 
 interface Props {
   linkText: string;
-  imageOne:string;
-  imageTwo:string;
+  image: string;
+  trainerName: string;
+  trainerBio: string;
 }
-const { linkText, imageOne, imageTwo } = Astro.props;
+const { linkText, image, trainerName, trainerBio } = Astro.props;
 ---
 
-<section class="py-12">
-  <div class="grid grid-cols-2 p-4">
-    <div>
-      <h1 class="text-white text-5xl italic max-w-xs yellowText pb-8">About Our Fit Family</h1>
-      <p class="text-white max-w-sm">
-        Astraeus was founded in 2001 by a husband and wife team, Bobby and Dora Graff. Since then, we have expanded to over 115 locations nationwide!
-      </p>
-      <p class="text-white mt-8 underline">
-        <a href={linkText}>Learn more</a>
-      </p>
+<section class="py-20 bg-black text-white flex flex-col items-center justify-center text-center px-6">
+  <h1 class="yellowText text-5xl md:text-6xl italic uppercase font-extrabold mb-12">
+    Conheça seu treinador
+  </h1>
+
+  <div class="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto">
+    <!-- FOTO DO TREINADOR -->
+    <div class="flex-shrink-0">
+      <Image
+        src={'/images/' + image}
+        width={450}
+        height={450}
+        alt="Foto do treinador"
+        class="rounded-2xl object-cover shadow-lg w-[280px] md:w-[400px] h-auto"
+      />
     </div>
-    <div class="grid grid-cols-2">
-        <Image src={'/images/'+imageOne} 
-        width={600} 
-        height={600/1.5} 
-        alt="Gym Instructor" 
-        class="rounded-md object-cover w-48"/>
-        <Image src={'/images/'+imageTwo}
-         width={600} height={600/1.5} alt="Boxing Instructor" class="rounded-md object-cover w-48 pt-8"/>
+
+    <!-- TEXTO DO TREINADOR -->
+    <div class="max-w-md text-left md:text-left">
+      <h2 class="text-3xl font-bold italic mb-4 text-yellow-300">{trainerName}</h2>
+      <p class="text-lg leading-relaxed text-white/90">{trainerBio}</p>
+
+      <a
+        href={linkText}
+        class="inline-block mt-8 bg-yellow-400 text-black font-bold uppercase px-6 py-3 rounded-md hover:bg-yellow-300 transition-all"
+      >
+        Saiba mais
+      </a>
     </div>
   </div>
 </section>

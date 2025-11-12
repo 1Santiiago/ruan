@@ -1,24 +1,25 @@
 ---
 interface Props {
   callToAction: string;
-  pfooter:String
+  pfooter: string;
 }
 
 const { callToAction, pfooter } = Astro.props;
 const imageURL = "gym-ropes.jpg";
 const bgStyle = { backgroundImage: `url('/images/${imageURL}')` };
-const content = [
+
+// redes sociais do cliente
+const socials = [
   {
-    heading: "Mailing Address",
-    info: "123 Anywhere St, Any City, ST 34565",
+    name: "Instagram",
+    url: "https://www.instagram.com/treinador.ruansec",
+    icon: "📸"
   },
+
   {
-    heading: "Email Address",
-    info: "hello@reallygreatsite.com",
-  },
-  {
-    heading: "Phone Number",
-    info: "(123) 456-7890",
+    name: "YouTube",
+    url: "https://www.youtube.com/@treinadorruansec",
+    icon: "▶"
   },
 ];
 ---
@@ -27,35 +28,41 @@ const content = [
   class="bg-cover bg-no-repeat bg-gray-700 bg-blend-multiply"
   style={bgStyle}
 >
-  <div class="mx-auto max-w-screen-xl p-10">
-    <h1
-      class="font-extrabold text-5xl yellowText tracking-wide uppercase italic  max-w-xl"
-    >
+  <div class="mx-auto max-w-screen-xl p-10 text-center">
+    <h1 class="font-extrabold text-5xl yellowText tracking-wide uppercase italic mb-4">
       {callToAction}
     </h1>
-    <p   class="font-extrabold text-2xl yellowText tracking-wide uppercase italic  max-w-xl">{pfooter}</p>
-    <div class="yellowBG grid grid-cols-1 md:grid-cols-3">
+    <p class="font-extrabold text-2xl yellowText tracking-wide uppercase italic mb-10">
+      {pfooter}
+    </p>
+
+    <!-- Redes sociais -->
+    <div class="yellowBG py-8 flex flex-col md:flex-row items-center justify-center gap-8">
       {
-        content.map((item) => (
-          <div class="p-12">
-            <h1 class="uppercase text-2xl italic">{item.heading}</h1>
-            <p>{item.info}</p>
-          </div>
+        socials.map((s) => (
+          <a
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 text-black hover:scale-110 transition-transform font-bold text-xl"
+          >
+            <span>{s.icon}</span> {s.name}
+          </a>
         ))
       }
     </div>
   </div>
- <!-- rodapé final -->
-    <div class="bg-black text-white text-center py-4 text-sm">
-      © {new Date().getFullYear()} Todos os direitos reservados. Desenvolvido por{" "}
-      <a
-        href="https://www.linkedin.com/in/santiago-ferreira-6964a9173/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="yellowText hover:underline"
-      >
-        Santiago Ferreira
-      </a>
-    </div>
+
+  <!-- Rodapé final -->
+  <div class="bg-black text-white text-center py-4 text-sm">
+    © {new Date().getFullYear()} Todos os direitos reservados. Desenvolvido por{" "}
+    <a
+      href="https://www.instagram.com/1santiiago/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="yellowText hover:underline"
+    >
+      Santiago Ferreira
+    </a>
   </div>
 </footer>

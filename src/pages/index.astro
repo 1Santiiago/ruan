@@ -1,20 +1,34 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Offers from '../components/Offers.astro';
-import Testimonials from '../components/Testimonials.astro';
-import HeroFooter from '../components/HeroFooter.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Offers from "../components/Offers.astro";
+import Testimonials from "../components/Testimonials.astro";
+import HeroFooter from "../components/HeroFooter.astro";
 ---
 
 <Layout title="Treinador Ruan Sec">
-	<main>
-		<!-- Add Call To action, company Name and Button text2 -->
-	<Hero callToAction='Redefina Seus Limites', buttonText='Quero ser apto(a)' companyName='Treinador Ruan Sec' callToAction2='A Aprovação começa no treino!'/>
-	<About linkText={'/'} imageOne="gym-instructor.jpg" imageTwo="gym-femaleinstructor.jpg" />
-	<Offers />
-	<Testimonials />
-	<HeroFooter callToAction='Seja Apto(a)' pfooter={'Não atrase voce mesmo!'} />
-	</main>
-</Layout>
+  <main>
+    <!-- Add Call To action, company Name and Button text2 -->
+    <Hero
+      callToAction="Redefina Seus Limites"
+      ,
+      buttonText="Quero ser apto(a)"
+      companyName="Treinador Ruan Sec"
+      callToAction2="A Aprovação começa no treino!"
+    />
+    <About
+      linkText="/"
+      image="gym-femaleinstructor.jpg"
+      trainerName="Ruan Sec"
+      trainerBio="Com anos de experiência em treinamento funcional e preparação física, Ruan acredita que cada aluno tem o poder de superar seus próprios limites através da disciplina e constância."
+    />
 
+    <Offers />
+    <Testimonials />
+    <HeroFooter
+      callToAction="Seja Apto(a)"
+      pfooter={"Não atrase voce mesmo!"}
+    />
+  </main>
+</Layout>

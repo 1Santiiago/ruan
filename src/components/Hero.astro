@@ -1,14 +1,23 @@
 ---
+// Definição das props do componente
 interface Props {
   callToAction: string;
   buttonText: string;
-  companyName:string;
-  callToAction2:string,
-  //    logoImage:string;
+  companyName: string;
+  callToAction2: string;
+  logoImage?: string; // logo opcional
 }
-const { callToAction, buttonText, companyName, callToAction2 } = Astro.props;
 
-const imageURL = "hero-fitness-image.jpg"
+// Desestruturação das props
+const { callToAction, buttonText, companyName, callToAction2, logoImage } = Astro.props;
+
+// Imagem de fundo padrão
+const imageURL = "hero-fitness-image.jpg";
+
+// Logo padrão se nenhuma for passada
+const logoSrc = logoImage ? `/images/${logoImage}` : "/images/logo.png";
+
+// Estilo inline para o background
 const bgStyle = {
   backgroundImage: `url('/images/${imageURL}')`,
 };
@@ -18,25 +27,23 @@ const bgStyle = {
   <!-- Camada da imagem de fundo -->
   <div
     class="absolute inset-0"
-    style="background-image: url('/images/tela.avif'); 
-           background-size: cover; 
+    style="background-image: url('/images/tela.avif');
+           background-size: cover;
            background-position: center;
            opacity: 0.5;">
   </div>
-Ç
+
   <!-- Camada de cor escura ou gradiente opcional -->
   <div class="absolute inset-0 bg-black/5"></div>
 
   <!-- Conteúdo -->
-  <nav class="relative text-white uppercase pt-8 p-4 font-bold2 z-10">
-    <ul>
-      <li>{companyName}</li>
-    </ul>
+  <nav class="relative text-white uppercase pt-1 font-bold2 z-10 flex justify-center">
+    <img src={logoSrc} alt={companyName} class=" w-80" width=""/>
   </nav>
 
-  <div class="relative z-10 px-4 mx-auto max-w-screen-xl text-center py-36 text-white">
+  <div class="relative z-10 px-4 mx-auto max-w-screen-xl text-center pb-10 text-white">
     <h1 class="font-extrabold text-8xl tracking-wide mb-4 uppercase italic">{callToAction}</h1>
-    <p class="font-extrabold text-4xl tracking-wide mb-4 uppercase italic">{callToAction2}</p>
+    <p class="font-extrabold text-4xl tracking-wide mb-4 uppercase italic text-yellow-300">{callToAction2}</p>
     <button class="yellowBG p-2 uppercase text-black font-bold">{buttonText}</button>
   </div>
 </header>
