@@ -9,7 +9,8 @@ interface Props {
 }
 
 // Desestruturação das props
-const { callToAction, buttonText, companyName, callToAction2, logoImage } = Astro.props;
+const { callToAction, buttonText, companyName, callToAction2, logoImage } =
+  Astro.props;
 
 // Imagem de fundo padrão
 const imageURL = "hero-fitness-image.jpg";
@@ -30,20 +31,33 @@ const bgStyle = {
     style="background-image: url('/images/tela.avif');
            background-size: cover;
            background-position: center;
-           opacity: 0.5;">
+           opacity: 0.5;"
+  >
   </div>
 
   <!-- Camada de cor escura ou gradiente opcional -->
   <div class="absolute inset-0 bg-black/5"></div>
 
   <!-- Conteúdo -->
-  <nav class="relative text-white uppercase pt-1 font-bold2 z-10 flex justify-center">
-    <img src={logoSrc} alt={companyName} class=" w-80" width=""/>
+  <nav
+    class="relative text-white uppercase pt-1 font-bold2 z-10 flex justify-center"
+  >
+    <img src={logoSrc} alt={companyName} class="w-80" width="" />
   </nav>
 
-  <div class="relative z-10 px-4 mx-auto max-w-screen-xl text-center pb-10 text-white">
-    <h1 class="font-extrabold text-8xl tracking-wide mb-4 uppercase italic">{callToAction}</h1>
-    <p class="font-extrabold text-4xl tracking-wide mb-4 uppercase italic text-yellow-300">{callToAction2}</p>
-    <button class="yellowBG p-2 uppercase text-black font-bold">{buttonText}</button>
+  <div
+    class="relative z-10 px-4 mx-auto max-w-screen-xl text-center pb-10 text-white"
+  >
+    <h1 class="font-extrabold text-8xl tracking-wide mb-4 uppercase italic">
+      {callToAction}
+    </h1>
+    <p
+      class="font-extrabold text-4xl tracking-wide mb-4 uppercase italic text-yellow-300"
+    >
+      {callToAction2}
+    </p>
+    <button class="yellowBG p-2 uppercase text-black font-bold"
+      >{buttonText}</button
+    >
   </div>
 </header>

@@ -13,13 +13,13 @@ const socials = [
   {
     name: "Instagram",
     url: "https://www.instagram.com/treinador.ruansec",
-    icon: "📸"
+    icon: "📸",
   },
 
   {
     name: "YouTube",
     url: "https://www.youtube.com/@treinadorruansec",
-    icon: "▶"
+    icon: "▶",
   },
 ];
 ---
@@ -29,15 +29,21 @@ const socials = [
   style={bgStyle}
 >
   <div class="mx-auto max-w-screen-xl p-10 text-center">
-    <h1 class="font-extrabold text-5xl yellowText tracking-wide uppercase italic mb-4">
+    <h1
+      class="font-extrabold text-5xl yellowText tracking-wide uppercase italic mb-4"
+    >
       {callToAction}
     </h1>
-    <p class="font-extrabold text-2xl yellowText tracking-wide uppercase italic mb-10">
+    <p
+      class="font-extrabold text-2xl yellowText tracking-wide uppercase italic mb-10"
+    >
       {pfooter}
     </p>
 
     <!-- Redes sociais -->
-    <div class="yellowBG py-8 flex flex-col md:flex-row items-center justify-center gap-8">
+    <div
+      class="yellowBG py-8 flex flex-col md:flex-row items-center justify-center gap-8"
+    >
       {
         socials.map((s) => (
           <a
@@ -55,9 +61,11 @@ const socials = [
 
   <!-- Rodapé final -->
   <div class="bg-black text-white text-center py-4 text-sm">
-    © {new Date().getFullYear()} Todos os direitos reservados. Desenvolvido por{" "}
+    © {new Date().getFullYear()} Todos os direitos reservados. Desenvolvido por{
+      " "
+    }
     <a
-      href="https://www.instagram.com/1santiiago/"
+      href="https://www.linkedin.com/in/santiago-ferreira-6964a9173/"
       target="_blank"
       rel="noopener noreferrer"
       class="yellowText hover:underline"
