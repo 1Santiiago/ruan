@@ -13,10 +13,10 @@ const { callToAction, buttonText, companyName, callToAction2, logoImage } =
   Astro.props;
 
 // Imagem de fundo padrão
-const imageURL = "hero-fitness-image.jpg";
+const imageURL = "fundo.jpg";
 
 // Logo padrão se nenhuma for passada
-const logoSrc = logoImage ? `/images/${logoImage}` : "/images/logo.png";
+const logoSrc = logoImage ? `/images/${logoImage}` : "/images/logo4.png";
 
 // Estilo inline para o background
 const bgStyle = {
@@ -36,7 +36,7 @@ const bgStyle = {
   </div>
 
   <!-- Camada de cor escura ou gradiente opcional -->
-  <div class="absolute inset-0 bg-black/5"></div>
+  <div class="absolute inset-0 bg-black/25"></div>
 
   <!-- Conteúdo -->
   <nav
@@ -52,11 +52,11 @@ const bgStyle = {
       {callToAction}
     </h1>
     <p
-      class="font-extrabold text-4xl tracking-wide mb-4 uppercase italic text-yellow-300"
+      class="font-extrabold text-4xl tracking-wide mb-4 uppercase italic yellowText"
     >
       {callToAction2}
     </p>
-    <button class="yellowBG p-2 uppercase text-black font-bold"
+    <button class="yellowBG p-2 uppercase text-black font-bold rounded-lg"
       >{buttonText}</button
     >
   </div>

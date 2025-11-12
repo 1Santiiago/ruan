@@ -5,6 +5,7 @@ import About from "../components/About.astro";
 import Offers from "../components/Offers.astro";
 import Testimonials from "../components/Testimonials.astro";
 import HeroFooter from "../components/HeroFooter.astro";
+import Question from "../components/Question.astro";
 ---
 
 <Layout title="Treinador Ruan Sec">
@@ -26,6 +27,39 @@ import HeroFooter from "../components/HeroFooter.astro";
 
     <Offers />
     <Testimonials />
+    <Question
+      faqs={[
+        {
+          question:
+            "1. O que é esta planilha de treinamento para concurso público?",
+          answer:
+            "Esta é uma planilha desenvolvida por um especialista em preparação física, projetada para ajudar candidatos a concursos públicos a se prepararem fisicamente. Ela contém exercícios específicos e orientações detalhadas para melhorar o condicionamento físico.",
+        },
+        {
+          question: "2. Quem pode usar esta planilha?",
+          answer:
+            "Qualquer pessoa que esteja se preparando para um concurso público e deseja melhorar seu condicionamento físico pode utilizar a planilha. Não é necessário ter experiência prévia com treinamentos físicos.",
+        },
+        {
+          question:
+            "3. Preciso de algum equipamento especial para seguir os treinos da planilha?",
+          answer:
+            "A maioria dos exercícios pode ser realizada com pouco ou nenhum equipamento. Alguns treinos podem sugerir o uso de pesos livres ou elásticos de resistência, mas alternativas são fornecidas.",
+        },
+        {
+          question:
+            "4. Quantas vezes por semana devo treinar com esta planilha?",
+          answer:
+            "A planilha é projetada para ser flexível, mas recomenda-se treinar pelo menos 3 a 4 vezes por semana para obter os melhores resultados.",
+        },
+        {
+          question:
+            "5. Posso adaptar a planilha ao meu nível de condicionamento físico?",
+          answer:
+            "Sim, a planilha inclui variações de exercícios para diferentes níveis de condicionamento físico, desde iniciantes até avançados.",
+        },
+      ]}
+    />
     <HeroFooter
       callToAction="Seja Apto(a)"
       pfooter={"Não atrase voce mesmo!"}
