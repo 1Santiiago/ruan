@@ -5,17 +5,15 @@ interface Props {
 }
 
 const { callToAction, pfooter } = Astro.props;
-const imageURL = "gym-ropes.jpg";
+const imageURL = "fundoInverter.jpg";
 const bgStyle = { backgroundImage: `url('/images/${imageURL}')` };
 
-// redes sociais do cliente
 const socials = [
   {
     name: "Instagram",
     url: "https://www.instagram.com/treinador.ruansec",
     icon: "📸",
   },
-
   {
     name: "YouTube",
     url: "https://www.youtube.com/@treinadorruansec",
@@ -25,7 +23,7 @@ const socials = [
 ---
 
 <footer
-  class="bg-cover bg-no-repeat bg-gray-700 bg-blend-multiply"
+  class="bg-center bg-cover bg-no-repeat bg-gray-500 bg-blend-multiply"
   style={bgStyle}
 >
   <div class="mx-auto max-w-screen-xl p-10 text-center">
@@ -40,7 +38,6 @@ const socials = [
       {pfooter}
     </p>
 
-    <!-- Redes sociais -->
     <div
       class="py-8 flex flex-col md:flex-row items-center justify-center gap-8"
     >
@@ -59,8 +56,7 @@ const socials = [
     </div>
   </div>
 
-  <!-- Rodapé final -->
-  <div class="bg-black text-white text-center py-4 text-sm">
+  <div class="bg-black/90 text-white text-center py-4 text-sm">
     © {new Date().getFullYear()} Todos os direitos reservados. Desenvolvido por{
       " "
     }

@@ -1,27 +1,18 @@
 ---
-// Definição das props do componente
 interface Props {
   callToAction: string;
   buttonText: string;
   companyName: string;
   callToAction2: string;
-  logoImage?: string; // logo opcional
+  logoImage?: string;
 }
 
-// Desestruturação das props
 const { callToAction, buttonText, companyName, callToAction2, logoImage } =
   Astro.props;
 
-// Imagem de fundo padrão
 const imageURL = "fundo.jpg";
-
-// Logo padrão se nenhuma for passada
 const logoSrc = logoImage ? `/images/${logoImage}` : "/images/logo4.png";
-
-// Estilo inline para o background
-const bgStyle = {
-  backgroundImage: `url('/images/${imageURL}')`,
-};
+const bgStyle = { backgroundImage: `url('/images/${imageURL}')` };
 ---
 
 <header class="relative bg-cover bg-no-repeat bg-center" style={bgStyle}>
@@ -35,14 +26,14 @@ const bgStyle = {
   >
   </div>
 
-  <!-- Camada de cor escura ou gradiente opcional -->
+  <!-- Camada de cor escura -->
   <div class="absolute inset-0 bg-black/25"></div>
 
   <!-- Conteúdo -->
   <nav
     class="relative text-white uppercase pt-1 font-bold2 z-10 flex justify-center"
   >
-    <img src={logoSrc} alt={companyName} class="w-80" width="" />
+    <img src={logoSrc} alt={companyName} class="w-80" />
   </nav>
 
   <div
@@ -56,8 +47,13 @@ const bgStyle = {
     >
       {callToAction2}
     </p>
-    <button class="yellowBG p-2 uppercase text-black font-bold rounded-lg"
-      >{buttonText}</button
+
+    <!-- Botão que rola até a seção de offers -->
+    <a
+      href="#offers"
+      class="yellowBG p-3 px-8 uppercase text-black font-bold rounded-lg hover:opacity-90 transition-opacity"
     >
+      {buttonText}
+    </a>
   </div>
 </header>

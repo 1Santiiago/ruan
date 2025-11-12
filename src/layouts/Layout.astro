@@ -1,31 +1,67 @@
 ---
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
+  url?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, image, url } = Astro.props;
+
+// valores padrão caso não sejam passados
+const metaDescription =
+  description ||
+  "Treinador Ruan Sec — Planilhas personalizadas de treino para homens e mulheres que buscam performance e resultado.";
+const metaImage = image ? `/images/${image}` : "/images/seo-cover.jpg";
+const metaUrl = url || "https://www.treinadorruansec.com.br";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={metaDescription} />
+    <meta name="author" content="Santiago Ferreira" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f9ef23" />
+
+    <!-- Open Graph (para Facebook, WhatsApp, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:image" content={metaImage} />
+    <meta property="og:url" content={metaUrl} />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={metaImage} />
+
+    <!-- Ícones e fontes -->
+    <link rel="icon" type="image/jpeg" href="/fav.jpg" />
+    <link rel="apple-touch-icon" href="/fav.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@300;400&display=swap"
       rel="stylesheet"
     />
+
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
   </head>
-  <body>
+
+  <body class="bg-[#141414] text-white">
     <slot />
   </body>
 </html>
+
+<!-- Estilos globais -->
 <style is:global>
   section {
     background-color: #141414;
@@ -33,15 +69,18 @@ const { title } = Astro.props;
   h1,
   h2,
   li {
-    font-family: "Anton", "sans-serif";
+    font-family: "Anton", sans-serif;
   }
   p {
-    font-family: "Hanken Grotesk", "sans-serif";
+    font-family: "Hanken Grotesk", sans-serif;
   }
   .yellowBG {
     background-color: #f9ef23;
   }
   .yellowText {
     color: #f9ef23;
+  }
+  .yellowBorder {
+    border-color: #f9ef23;
   }
 </style>

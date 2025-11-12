@@ -1,34 +1,39 @@
 ---
 import ImageCard from "./ImageCard.astro";
+
 const offers = [
-    {
-        imageURL:"dumbbells.jpg",
-        offerText:"Tour Our Gym",
-         link: "https://www.google.com"
-    },
-    {
-        imageURL:"rowing.jpg",
-        offerText:"Check out our Group Classes",
-        link: "https://www.google.com"
-    },
-    {
-        imageURL:"skipping.jpg",
-        offerText:"Ask about Personal Training",
-                link: "https://www.google.com"
-    }
-]
+  {
+    
+    imageURL: "homem.avif",
+    offerText: "HOMEM",
+    buttonText: "Quero ser apto",
+    link: "/planilhas-masculinas",
+  },
+  {
+    imageURL: "mulher.avif",
+    offerText: "MULHER",
+    buttonText: "Quero ser apta",
+    link: "/planilhas-femininas",
+  },
+];
 ---
 
+<section class="py-20 text-center" id="offers">
+  <h1 class="yellowText text-5xl italic uppercase mb-3">Nossas Planilhas</h1>
+  <p class="text-white mb-12 opacity-90">
+    Planilhas personalizadas de acordo com seu estado físico
+  </p>
 
-<section class="py-12 text-center">
-<h1 class="yellowText text-5xl italic uppercase">Nossas Planilhas</h1>
-<p class="text-white">Planilhas personalizadas de acordo com seu estado</p>
-<div class="grid grid-cols-1 md:grid-cols-3">
-{
-    offers.map((offer)=>(
-        <ImageCard imageURL={offer.imageURL} text={offer.offerText} link={offer.link} />
-    ))
-}
-
-</div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto px-4">
+    {
+      offers.map((offer) => (
+        <ImageCard
+          imageURL={offer.imageURL}
+          text={offer.offerText}:
+          link={offer.link}
+          buttonText={offer.buttonText}
+        />
+      ))
+    }
+  </div>
 </section>

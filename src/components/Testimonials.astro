@@ -1,35 +1,79 @@
 ---
 const testimonials = [
   {
-    profileURL: "gym-femaleinstructor.jpg",
-    author: "Santiago Ferreira",
-    age: 30,
-    quote:
-      "Testimonials are short quotes from people who love your brand. It's a great way to convince customers to try your services.",
+    videoURL: "https://www.youtube.com/watch?v=S2ua2zFki_Q",
+    author: "João Pereira",
+    age: 28,
+  },
+  {
+    videoURL: "https://www.youtube.com/watch?v=XtTRIhPooBs",
+    author: "Mariana Silva",
+    age: 32,
+  },
+  {
+    videoURL: "https://www.youtube.com/watch?v=YtZ9IwahODo",
+    author: "Carlos Andrade",
+    age: 26,
   },
 ];
+
+// função que converte links normais do YouTube em URLs embed
+function toEmbedURL(url: any) {
+  if (!url) return "";
+  if (url.includes("/embed/")) return url;
+
+  const shortMatch = url.match(/youtu\.be\/([A-Za-z0-9_-]{6,})/);
+  if (shortMatch)
+    return `https://www.youtube-nocookie.com/embed/${shortMatch[1]}`;
+
+  const watchMatch = url.match(/[?&]v=([A-Za-z0-9_-]{6,})/);
+  if (watchMatch)
+    return `https://www.youtube-nocookie.com/embed/${watchMatch[1]}`;
+
+  const lastSegment = url.split("/").pop();
+  if (lastSegment && lastSegment.length >= 6)
+    return `https://www.youtube-nocookie.com/embed/${lastSegment}`;
+
+  return "";
+}
 ---
 
 <section
-  class="min-h-screen flex flex-col items-center justify-center text-center py-12 mx-auto"
+  class="min-h-screen flex flex-col items-center justify-center text-center py-12 mx-auto bg-black"
 >
   <h1 class="yellowText text-5xl italic uppercase mb-12">Depoimentos</h1>
 
-  {
-    testimonials.map((profile) => (
-      <div class="flex flex-col items-center max-w-md bg-white/10 rounded-2xl shadow-lg overflow-hidden">
-        <img
-          src={"/images/" + profile.profileURL}
-          alt="Testimonial"
-          class="object-cover w-full h-64"
-        />
-        <div class="yellowBG p-8 w-full">
-          <p class="pb-4 font-bold text-black">{profile.quote}</p>
-          <small class="yellowtext font-semibold ">
-            {profile.author}, {profile.age}
-          </small>
-        </div>
-      </div>
-    ))
-  }
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl px-4">
+    {
+      testimonials.map((video) => {
+        const embedSrc = toEmbedURL(video.videoURL);
+        return (
+          <div class="flex flex-col items-center bg-white/10 rounded-2xl shadow-lg overflow-hidden backdrop-blur-sm">
+            <div class="w-full aspect-video bg-black">
+              {embedSrc ? (
+                <iframe
+                  src={embedSrc}
+                  title={`Depoimento - ${video.author}`}
+                  class="w-full h-full"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center text-white/70">
+                  Link de vídeo inválido
+                </div>
+              )}
+            </div>
+
+            <div class="yellowBG p-6 w-full">
+              <small class="text-black font-semibold uppercase">
+                {video.author}, {video.age}
+              </small>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
 </section>
